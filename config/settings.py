@@ -45,8 +45,7 @@ INSTALLED_APPS = [
     'cars',
     'rest_framework',
     'rest_framework.authtoken',
-
-
+    'rest_auth',
 ]
 
 MIDDLEWARE = [
@@ -158,19 +157,18 @@ CORS_ALLOW_HEADERS = (
     'x-requested-with',
 )
 
+AUTH_USER_MODEL = 'users.User'
 
-## DRF 
 REST_FRAMEWORK = {
     'DEFAULT_RENDERER_CLASSES': (
         'rest_framework.renderers.JSONRenderer',
     ),
 
     'DEFAULT_AUTHENTICATION_CLASSES': (
-        'rest_framework_jwt.authentication.JSONWebTokenAuthentication',
+        'rest_framework.authentication.TokenAuthentication',
     ),
 }
 
-## JWT_AUTH 설정
 JWT_AUTH = {
     'JWT_SECRET_KEY': SECRET_KEY,
     'JWT_ALGORITHM': ALGORITHM, 
